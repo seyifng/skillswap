@@ -7,31 +7,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/skillswap")
-public class SkillSwapController {
+@RequestMapping("/api/skillswap/user")
+public class UserController {
 
     private final UserServiceImpl userServiceImpl;
 
-    public SkillSwapController(UserServiceImpl userServiceImpl) {
+    public UserController(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }
 
-    @PostMapping("/user")
+    @PostMapping
     public User createUser(@RequestBody User user) {
         return userServiceImpl.createUser(user);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return userServiceImpl.getUserById(id);
     }
 
-    @GetMapping("/user")
+    @GetMapping
     public List<User> getAllUsers() {
         return userServiceImpl.getAllUsers();
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User user) {
         return userServiceImpl.updateUser(id, user);
     }
